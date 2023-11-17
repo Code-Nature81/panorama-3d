@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Add 3D terrain to a map</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+h1{
+  text-align: center;
+  
+}
+
+
+.mapboxgl-popup-content{
+  
+  background-color: black;
+  color: white;
+  opacity : 0.9;
+  border-radius: 5px;
+  
+ 
+	 
+}
+
+
+
+</style>
+</head>
+<body>
+<div id="map"></div>
+<pre id="info"></pre>
+ 
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiZ3ViaW5xIiwiYSI6ImNrbnlubnVwYjBsMjgyb3J4b3hqM2YwOGsifQ.KV-VZe4nIEMc7rhtHmM5BQ';
+var map = new mapboxgl.Map({
+container: 'map',
+zoom: 12.9,
+center: [2.277505, 42.939908],  
+pitch: 70,
+bearing: 220,
+style: 'mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y'
+});
+ 
+map.on('load', function () {
+map.addSource('mapbox-dem', {
+'type': 'raster-dem',
+'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+'tileSize': 400,
+'maxzoom': 14
+});
+// add the DEM source as a terrain layer with exaggerated height
+map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
+ 
+// add a sky layer that will show when the map is highly pitched
+map.addLayer({
+'id': 'sky',
+'type': 'sky',
+'paint': {
+'sky-type': 'atmosphere',
+'sky-atmosphere-sun': [0.0, 0.0],
+'sky-atmosphere-sun-intensity': 15
+}
+});
+});
+
+var marker2 = new mapboxgl.Marker({ color: 'red', rotation: 0,})
+.setLngLat([2.277505, 42.939908])
+.setPopup(new mapboxgl.Popup ().setHTML ("<h1>Vous êtes ici "))
+.addTo(map)
+
+var marker2 = new mapboxgl.Marker({ color: 'green', rotation: 0, })
+.setLngLat([2.32742, 42.936379]) 
+.setPopup(new mapboxgl.Popup().setHTML("<h1>Le Cardou <br><br><br><img src='https://image.jimcdn.com/app/cms/image/transf/dimension=677x10000:format=jpg/path/sbc2182d50e6e8fb3/image/i9a5afdd206ddaa7e/version/1470668095/falaise-du-cardou-rennes-les-bains.jpg'width='200' style='background-color:black'></h1><hr><h3>Le Cardou représentait déjà une montagne mythique ou les spéculations des chercheurs allaient de bon train. Tantôt cache trésor, tantôt cache aux tombeaux, les hypothèses et les rumeurs ne manquent pas autour du Pech. Pourquoi le Cardou fascine-t-il autant ?...</h3><hr><br><a href='https://www.rennes-le-chateau-archive.com/cardou_1.php' color='white'><h4><img src='https://api.iconify.design/iwwa:info.svg' width='10'>&nbsp Plus d'informations: ICI</a></h4>"))
+.addTo(map)
+
+var marker2 = new mapboxgl.Marker({ color: 'green', rotation: 0, })
+.setLngLat([2.296998, 42.927651]) 
+.setPopup(new mapboxgl.Popup().setHTML("<h1>Le Sarrat Rouge "))
+.addTo(map)
+
+var marker2 = new mapboxgl.Marker({ color: 'green', rotation: 0, })
+.setLngLat([2.264051, 42.927054]) 
+.setPopup(new mapboxgl.Popup().setHTML("<h1>Rennes le château <br><br><br><img src='https://www.rennes-le-chateau.fr/wp-content/uploads/2020/04/91342488_229141775162200_5947943678147297280_n.jpg'width='200' style='background-color:black'></h1><hr><h3>Perché sur sa colline au cœur de la Haute Vallée de l’Aude, le petit village de Rennes-le-Château n’a encore rien dévoilé de ses mystères…Découvrez ce lieu hors du temps et l’étonnante histoire de Bérenger Saunière, modeste curé de campagne qui transforma à jamais le destin de cette petite commune sans histoire..</h3><hr><br><a href='https://www.rennes-le-chateau-archive.com/cardou_1.php' color='white'><h4><img src='https://api.iconify.design/iwwa:info.svg' width='10'>&nbsp Plus d'informations: ICI</a></h4>"))
+.addTo(map)
+
+var marker2 = new mapboxgl.Marker({ color: 'green', rotation: 0, })
+.setLngLat([2.1920632423280777, 42.93459637690266]) 
+.setPopup(new mapboxgl.Popup().setHTML("<h1>Tour de Fa <br><br><br><img src='https://idata.over-blog.com/0/23/09/69/chateau/11-30-34-48/11/fa/11-fa-06.jpg'width='200' style='background-color:black'></h1><hr><h3>Perché sur sa colline au cœur de la Haute Vallée de l’Aude, le petit village de Rennes-le-Château n’a encore rien dévoilé de ses mystères…Découvrez ce lieu hors du temps et l’étonnante histoire de Bérenger Saunière, modeste curé de campagne qui transforma à jamais le destin de cette petite commune sans histoire..</h3><hr><br><a href='https://chateauruine.fr/article-2876704.html' color='white'><h4><img src='https://api.iconify.design/iwwa:info.svg' width='10'>&nbsp Plus d'informations: ICI</a></h4>"))
+.addTo(map)
+42.945102 , 2.245984
+var marker2 = new mapboxgl.Marker({ color: 'green', rotation: 0, })
+.setLngLat([2.245984, 42.945102]) 
+.setPopup(new mapboxgl.Popup().setHTML("<h1>Montazels <br><br><br><img src='https://upload.wikimedia.org/wikipedia/commons/6/69/Montazels.jpg'width='200' style='background-color:black'></h1><hr><h3>Elle appartient à l'unité urbaine d'Espéraza et fait partie de l'aire d'attraction de Limoux. Ses habitants sont appelés les Montazelois ou Montazeloises.Le patrimoine architectural de la commune comprend un immeuble protégé au titre des monuments historiques : la Fontaine, inscrite en 1951.</h3><hr><br><a href='https://montazels.fr/' color='white'><h4><img src='https://api.iconify.design/iwwa:info.svg' width='10'>&nbsp Plus d'informations: ICI</a></h4>"))
+.addTo(map)
+
+
+map.addControl(new mapboxgl.NavigationControl());
+</script>
+ 
+</body>
+</html>
